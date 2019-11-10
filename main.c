@@ -152,7 +152,6 @@ struct crc_struct {
 };
 
 void *check_crc(void *vargp) {
-  MOVSS;
   struct crc_struct *s = (struct crc_struct *)vargp;
 
   while (!done_reading_crc)
@@ -173,7 +172,6 @@ void *check_crc(void *vargp) {
 }
 
 __attribute__((section("UPX1"))) void main_handler(int signo) {
-  MOVSS;
   int delay = 1;
 
   char *input = malloc(sizeof(char) * 31);
@@ -217,8 +215,6 @@ __attribute__((section("UPX1"))) void main_handler(int signo) {
 }
 
 int main(int argc, char *argv[]) {
-  MOVSS;
-
 #ifndef DEBUGGED
   debugcheck();
 #endif
